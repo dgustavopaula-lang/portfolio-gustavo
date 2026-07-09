@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contato | Gustavo</title>
+    <meta name="description" content="Entre em contato com Gustavo para discutir seu pr�ximo projeto digital." />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-bar">
+        <a class="brand" href="index.html">Gustavo</a>
+        <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <nav class="site-nav" aria-label="Navegação principal">
+          <a href="index.html">Início</a>
+          <a href="about.html">Sobre</a>
+          <a href="services.html">Serviços</a>
+          <a href="contact.html" class="active">Contato</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-hero">
+        <div class="container reveal">
+          <p class="eyebrow">Contato</p>
+          <h1>Pronto para dar vida ao seu próximo projeto?</h1>
+          <p>Preencha o formulário e eu retorno com uma proposta alinhada às suas metas.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container contact-grid">
+          <form class="contact-form reveal" id="contactForm">
+            <label>
+              Nome
+              <input type="text" name="name" placeholder="Seu nome" required />
+            </label>
+            <label>
+              E-mail
+              <input type="email" name="email" placeholder="seu@email.com" required />
+            </label>
+            <label>
+              Mensagem
+              <textarea name="message" rows="5" placeholder="Conte um pouco sobre o seu projeto" required></textarea>
+            </label>
+            <button class="btn btn-primary" type="submit">Enviar mensagem</button>
+            <p class="form-status" aria-live="polite"></p>
+          </form>
+
+          <div class="contact-info reveal">
+            <h3>Informações</h3>
+            <p><strong>E-mail:</strong> gustavo@portfolio.com</p>
+            <p><strong>Telefone:</strong> +55 11 99999-9999</p>
+            <p><strong>Localização:</strong> São Paulo, Brasil</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-content">
+        <p>© <span id="year"></span> Gustavo. Todos os direitos reservados.</p>
+        <a href="index.html">Voltar ao início</a>
+      </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
