@@ -1,0 +1,21 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Formatar tudo (Prettier)",
+      "type": "shell",
+      "command": "npx prettier --write .",
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "Abrir index.html no navegador",
+      "type": "shell",
+      "command": "xdg-open index.html",
+      "problemMatcher": []
+    }
+  ]
+}
