@@ -246,6 +246,24 @@ p {
   padding: 1.6rem;
 }
 
+.project-card {
+  padding: 0;
+  overflow: hidden;
+}
+
+.project-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: center;
+  border-bottom: 1px solid var(--border);
+}
+
+.project-card .project-card-body {
+  padding: 1.6rem;
+}
+
 .reveal {
   opacity: 0;
   transform: translateY(24px);
