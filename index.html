@@ -1,131 +1,442 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gustavo | Portfólio</title>
-    <meta
-      name="description"
-      content="Portfólio de Gustavo, profissional especializado em desenvolvimento web, experiência digital e soluções criativas."
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="css/style.css" />
-  </head>
-  <body>
-    <header class="site-header">
-      <div class="container nav-bar">
-        <a class="brand" href="index.html">Gustavo</a>
-        <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-        <nav class="site-nav" aria-label="Navegação principal">
-          <a href="index.html" class="active">Início</a>
-          <a href="about.html">Sobre</a>
-          <a href="services.html">Serviços</a>
-          <a href="contact.html">Contato</a>
-          <a href="https://agrodigital.onrender.com" target="_blank">AgroDigital</a>
-        </nav>
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Gustavo Paula Santos — Soluções Digitais para empresas. Sistemas de gestão, dashboards e plataformas web."/>
+  <title>Gustavo Paula Santos | Soluções Digitais</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    :root{--bg:#0d0d0d;--card:#1a1a1a;--orange:#ff6a00;--orange2:#ff8c38;--white:#f5f5f5;--gray:#888;--border:#2a2a2a;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--white);font-family:'Segoe UI',sans-serif;}
+
+    /* NAV */
+    nav{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 2.5rem;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(13,13,13,0.97);backdrop-filter:blur(10px);z-index:100;}
+    .logo{font-size:1.1rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;}
+    .logo span{color:var(--orange);}
+    .nav-links{display:flex;gap:2rem;list-style:none;align-items:center;}
+    .nav-links a{color:var(--gray);text-decoration:none;font-size:0.85rem;letter-spacing:0.5px;transition:color 0.2s;}
+    .nav-links a:hover{color:var(--orange);}
+    .btn-nav{background:var(--orange);color:#000!important;font-weight:700;padding:0.5rem 1.2rem;border-radius:6px;}
+
+    /* HERO */
+    .hero{min-height:95vh;display:flex;flex-direction:column;justify-content:center;padding:3rem 2.5rem;position:relative;overflow:hidden;}
+    .hero::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(255,106,0,0.08) 0%,transparent 70%);pointer-events:none;}
+    .hero-inner{max-width:1100px;margin:0 auto;width:100%;}
+    .hero-eyebrow{display:flex;align-items:center;gap:1rem;margin-bottom:2rem;}
+    .hero-eyebrow span{color:var(--orange);font-size:0.75rem;letter-spacing:3px;text-transform:uppercase;}
+    .hero-eyebrow::before{content:'';width:40px;height:1px;background:var(--orange);}
+    .hero h1{font-size:clamp(2.5rem,7vw,5rem);font-weight:900;line-height:1.05;letter-spacing:-1px;margin-bottom:1.5rem;max-width:800px;}
+    .hero h1 .line-orange{color:var(--orange);}
+    .hero h1 .line-gray{color:#444;}
+    .hero-sub{color:var(--gray);font-size:1.05rem;line-height:1.8;max-width:550px;margin-bottom:3rem;}
+    .hero-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:4rem;}
+    .btn-primary{background:var(--orange);color:#000;font-weight:700;padding:0.9rem 2rem;border-radius:8px;text-decoration:none;font-size:0.95rem;transition:background 0.2s;}
+    .btn-primary:hover{background:var(--orange2);}
+    .btn-outline{border:1px solid #333;color:var(--white);padding:0.9rem 2rem;border-radius:8px;text-decoration:none;font-size:0.95rem;transition:all 0.2s;}
+    .btn-outline:hover{border-color:var(--orange);color:var(--orange);}
+
+    /* SOLUCOES TICKER */
+    .solutions-bar{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:1.2rem 0;overflow:hidden;position:relative;}
+    .solutions-bar::before,.solutions-bar::after{content:'';position:absolute;top:0;width:100px;height:100%;z-index:2;}
+    .solutions-bar::before{left:0;background:linear-gradient(to right,var(--bg),transparent);}
+    .solutions-bar::after{right:0;background:linear-gradient(to left,var(--bg),transparent);}
+    .ticker-track{display:flex;gap:3rem;animation:ticker 25s linear infinite;white-space:nowrap;}
+    .ticker-item{color:var(--gray);font-size:0.8rem;letter-spacing:2px;text-transform:uppercase;display:flex;align-items:center;gap:0.8rem;}
+    .ticker-item::before{content:'◆';color:var(--orange);font-size:0.5rem;}
+    @keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+    /* STATS */
+    .stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--border);border-radius:12px;overflow:hidden;max-width:1100px;margin:0 auto;}
+    .stat-item{padding:2rem;text-align:center;border-right:1px solid var(--border);}
+    .stat-item:last-child{border:none;}
+    .stat-item h3{font-size:2.5rem;font-weight:900;color:var(--orange);margin-bottom:0.3rem;}
+    .stat-item p{color:var(--gray);font-size:0.8rem;text-transform:uppercase;letter-spacing:1px;}
+
+    /* SECTION BASE */
+    section{padding:5rem 2.5rem;}
+    .container{max-width:1100px;margin:0 auto;}
+    .section-eyebrow{display:flex;align-items:center;gap:1rem;margin-bottom:1rem;}
+    .section-eyebrow span{color:var(--orange);font-size:0.75rem;letter-spacing:3px;text-transform:uppercase;}
+    .section-eyebrow::before{content:'';width:30px;height:1px;background:var(--orange);}
+    .section-title{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;margin-bottom:0.5rem;letter-spacing:-0.5px;}
+    .section-sub{color:var(--gray);font-size:0.95rem;margin-bottom:3rem;max-width:600px;line-height:1.7;}
+
+    /* SISTEMAS */
+    .systems-bg{background:#080808;}
+    .systems-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem;}
+    .system-card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:all 0.25s;position:relative;}
+    .system-card:hover{border-color:var(--orange);transform:translateY(-5px);}
+    .system-header{padding:1.5rem 1.5rem 0;}
+    .system-icon-row{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem;}
+    .system-emoji{width:52px;height:52px;background:#111;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;border:1px solid var(--border);}
+    .system-segment{background:#1f0f00;color:var(--orange);font-size:0.65rem;font-weight:700;padding:0.25rem 0.6rem;border-radius:20px;text-transform:uppercase;letter-spacing:1px;}
+    .system-card h3{font-size:1.05rem;font-weight:700;margin-bottom:0.4rem;}
+    .system-card p{color:var(--gray);font-size:0.82rem;line-height:1.6;padding:0 1.5rem;}
+    .system-footer{padding:1.2rem 1.5rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);margin-top:1.2rem;}
+    .system-techs{display:flex;gap:0.4rem;flex-wrap:wrap;}
+    .tech{background:#111;color:var(--gray);font-size:0.68rem;padding:0.2rem 0.5rem;border-radius:4px;border:1px solid var(--border);}
+    .system-link{color:var(--orange);text-decoration:none;font-size:0.8rem;font-weight:700;white-space:nowrap;}
+    .system-link:hover{text-decoration:underline;}
+    .featured-badge{position:absolute;top:1rem;right:1rem;background:var(--orange);color:#000;font-size:0.65rem;font-weight:700;padding:0.2rem 0.6rem;border-radius:20px;text-transform:uppercase;}
+
+    /* SOBRE */
+    .about-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:4rem;align-items:start;}
+    .about-text p{color:var(--gray);line-height:1.9;margin-bottom:1rem;font-size:0.92rem;}
+    .about-text strong{color:var(--white);}
+    .about-tags{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1.5rem;}
+    .tag{background:#111;border:1px solid var(--border);color:var(--gray);padding:0.35rem 0.8rem;border-radius:20px;font-size:0.78rem;}
+    .tag.hl{border-color:var(--orange);color:var(--orange);}
+    .side-box{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.8rem;margin-bottom:1.2rem;}
+    .side-box h4{font-size:0.8rem;text-transform:uppercase;letter-spacing:2px;color:var(--gray);margin-bottom:1rem;}
+    .lang-item{display:flex;justify-content:space-between;align-items:center;padding:0.55rem 0;border-bottom:1px solid var(--border);}
+    .lang-item:last-child{border:none;}
+    .lang-item span:first-child{color:var(--white);font-size:0.85rem;}
+    .lang-level{color:var(--orange);font-size:0.75rem;font-weight:700;}
+    .github-box{background:linear-gradient(135deg,#0d1117,#161b22);border:1px solid #30363d;border-radius:14px;padding:1.8rem;}
+    .github-box h4{color:#c9d1d9;font-size:0.85rem;margin-bottom:0.5rem;}
+    .github-box p{color:#8b949e;font-size:0.8rem;margin-bottom:1rem;}
+    .github-link{display:flex;align-items:center;gap:0.5rem;color:#58a6ff;font-size:0.85rem;text-decoration:none;font-weight:700;}
+
+    /* SERVIÇOS */
+    .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.2rem;}
+    .service-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.8rem;transition:border-color 0.2s;}
+    .service-card:hover{border-color:var(--orange);}
+    .service-icon{font-size:1.8rem;margin-bottom:1rem;}
+    .service-card h3{font-size:0.95rem;font-weight:700;margin-bottom:0.5rem;}
+    .service-card p{color:var(--gray);font-size:0.82rem;line-height:1.6;}
+    .service-price{color:var(--orange);font-size:0.8rem;font-weight:700;margin-top:1rem;}
+
+    /* CONTATO */
+    .contact-bg{background:#080808;}
+    .contact-inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+    .contact-left h2{font-size:2.2rem;font-weight:800;line-height:1.2;margin-bottom:1rem;}
+    .contact-left h2 span{color:var(--orange);}
+    .contact-left p{color:var(--gray);line-height:1.8;margin-bottom:2rem;font-size:0.92rem;}
+    .contact-items{display:flex;flex-direction:column;gap:0.8rem;}
+    .contact-item{display:flex;align-items:center;gap:1rem;padding:0.9rem 1rem;background:var(--card);border:1px solid var(--border);border-radius:10px;text-decoration:none;color:var(--white);font-size:0.85rem;transition:border-color 0.2s;}
+    .contact-item:hover{border-color:var(--orange);}
+    .contact-item .ci{font-size:1.2rem;width:32px;text-align:center;}
+    .contact-right{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2.5rem;}
+    .contact-right h3{font-size:1.1rem;font-weight:700;margin-bottom:0.5rem;}
+    .contact-right p{color:var(--gray);font-size:0.85rem;margin-bottom:2rem;line-height:1.7;}
+    .process-steps{display:flex;flex-direction:column;gap:1rem;margin-bottom:2rem;}
+    .process-step{display:flex;gap:1rem;align-items:flex-start;}
+    .step-num{background:var(--orange);color:#000;font-weight:800;font-size:0.75rem;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+    .step-text{color:var(--gray);font-size:0.82rem;line-height:1.5;}
+    .step-text strong{color:var(--white);}
+
+    /* FOOTER */
+    footer{border-top:1px solid var(--border);padding:2rem 2.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+    footer p{color:var(--gray);font-size:0.8rem;}
+    footer span{color:var(--orange);}
+
+    @media(max-width:768px){
+      .hero h1{font-size:2.5rem;}
+      .stats-row{grid-template-columns:repeat(2,1fr);}
+      .about-grid,.contact-inner{grid-template-columns:1fr;}
+      .nav-links{display:none;}
+      nav{padding:1rem 1.5rem;}
+      section{padding:3rem 1.5rem;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">GPS<span>.</span>dev</div>
+  <ul class="nav-links">
+    <li><a href="#sistemas">Sistemas</a></li>
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="https://github.com/dgustavopaula-lang" target="_blank">GitHub</a></li>
+    <li><a href="#contato" class="btn-nav">Contato →</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow"><span>Soluções Digitais · Brasil</span></div>
+    <h1>
+      Sistemas que<br>
+      <span class="line-orange">resolvem problemas</span><br>
+      <span class="line-gray">do mundo real.</span>
+    </h1>
+    <p class="hero-sub">Desenvolvo plataformas digitais completas para agronegócio, saúde, educação e hotelaria. Da ideia ao deploy em dias — não em meses.</p>
+    <div class="hero-btns">
+      <a href="#sistemas" class="btn-primary">Ver sistemas →</a>
+      <a href="#contato" class="btn-outline">Solicitar proposta</a>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="solutions-bar">
+  <div class="ticker-track">
+    <span class="ticker-item">AgroDigital</span>
+    <span class="ticker-item">English Dashboard</span>
+    <span class="ticker-item">Hotel Dashboard</span>
+    <span class="ticker-item">Sistema Clínica Saúde</span>
+    <span class="ticker-item">Sistema Imobiliária</span>
+    <span class="ticker-item">Sistema Farmácia</span>
+    <span class="ticker-item">Sistema Minimercado</span>
+    <span class="ticker-item">Sistema Posto de Gasolina</span>
+    <span class="ticker-item">AgroDigital</span>
+    <span class="ticker-item">English Dashboard</span>
+    <span class="ticker-item">Hotel Dashboard</span>
+    <span class="ticker-item">Sistema Clínica Saúde</span>
+    <span class="ticker-item">Sistema Imobiliária</span>
+    <span class="ticker-item">Sistema Farmácia</span>
+    <span class="ticker-item">Sistema Minimercado</span>
+    <span class="ticker-item">Sistema Posto de Gasolina</span>
+  </div>
+</div>
+
+<!-- STATS -->
+<section style="padding:3rem 2.5rem;">
+  <div class="stats-row">
+    <div class="stat-item"><h3>8+</h3><p>Sistemas entregues</p></div>
+    <div class="stat-item"><h3>5</h3><p>Segmentos atendidos</p></div>
+    <div class="stat-item"><h3>20+</h3><p>Anos de pesquisa</p></div>
+    <div class="stat-item"><h3>24h</h3><p>Diagnóstico gratuito</p></div>
+  </div>
+</section>
+
+<!-- SISTEMAS -->
+<section id="sistemas" class="systems-bg">
+  <div class="container">
+    <div class="section-eyebrow"><span>Portfólio de Sistemas</span></div>
+    <h2 class="section-title">Soluções digitais por segmento.</h2>
+    <p class="section-sub">Cada sistema foi desenvolvido para resolver um problema específico de negócio — com interface profissional, entrega rápida e código publicado no GitHub.</p>
+    <div class="systems-grid">
+
+      <div class="system-card">
+        <span class="featured-badge">⭐ Destaque</span>
+        <div class="system-header">
+          <div class="system-icon-row">
+            <div class="system-emoji">🌾</div>
+            <span class="system-segment">Agronegócio</span>
+          </div>
+          <h3>AgroDigital</h3>
+        </div>
+        <p>Dashboard SaaS para gestão agrícola com controle financeiro, plantio, monitoramento e chatbot IA integrado. Stack moderna com React + TypeScript.</p>
+        <div class="system-footer">
+          <div class="system-techs"><span class="tech">React</span><span class="tech">TypeScript</span><span class="tech">Vite</span></div>
+          <a href="https://agrodigital.onrender.com" target="_blank" class="system-link">Ver ao vivo →</a>
+        </div>
       </div>
-    </header>
 
-    <main>
-      <section class="hero">
-        <div class="container hero-grid">
-          <div class="hero-copy reveal">
-            <p class="eyebrow">Desenvolvedor & Designer de Experiência</p>
-            <h1>Construo marcas e produtos digitais que conectam pessoas.</h1>
-            <p>
-              Crio websites modernos, estratégicos e com alto impacto visual para empresas que
-              querem crescer com presença online forte.
-            </p>
-            <div class="hero-actions">
-              <a class="btn btn-primary" href="services.html">Ver serviços</a>
-              <a class="btn btn-secondary" href="contact.html">Fale comigo</a>
-            </div>
-            <ul class="hero-highlights">
-              <li>+5 anos de experiência</li>
-              <li>Projetos com foco em conversão</li>
-              <li>Atendimento próximo e personalizado</li>
-            </ul>
+      <div class="system-card">
+        <div class="system-header">
+          <div class="system-icon-row">
+            <div class="system-emoji">🇺🇸</div>
+            <span class="system-segment">Educação</span>
           </div>
-          <div class="hero-card reveal">
-            <div class="card-glow"></div>
-            <h3>O que eu entrego</h3>
-            <ul>
-              <li>Identidade visual forte</li>
-              <li>Sites responsivos e rápidos</li>
-              <li>Estratégia de conteúdo e posicionamento</li>
-            </ul>
-          </div>
+          <h3>English Dashboard</h3>
         </div>
-      </section>
-
-      <section class="section">
-        <div class="container">
-          <div class="section-heading reveal">
-            <p class="eyebrow">Portfólio</p>
-            <h2>Um trabalho pensado para gerar resultado.</h2>
-          </div>
-          <div class="cards-grid">
-            <article class="info-card reveal">
-              <h3>Design estratégico</h3>
-              <p>Estruturas visuais claras, alinhadas ao público e à mensagem da marca.</p>
-            </article>
-            <article class="info-card reveal">
-              <h3>Experiência fluida</h3>
-              <p>Interfaces intuitivas que guiam o visitante até a ação desejada.</p>
-            </article>
-            <article class="info-card reveal">
-              <h3>Performance</h3>
-              <p>
-                Sites otimizados para carregamento rápido, SEO e boa navegação em qualquer tela.
-              </p>
-            </article>
-          </div>
+        <p>Plataforma completa para escola de inglês online: landing page, cadastro de alunos, 3 planos de assinatura, login do professor e pagamento via PIX.</p>
+        <div class="system-footer">
+          <div class="system-techs"><span class="tech">HTML</span><span class="tech">CSS</span><span class="tech">JS</span></div>
+          <a href="https://dgustavopaula-lang.github.io/english-dashboard" target="_blank" class="system-link">Ver ao vivo →</a>
         </div>
-      </section>
-      <section class="section">
-        <div class="container">
-          <div class="section-heading reveal">
-            <p class="eyebrow">Projetos</p>
-            <h2>Sistemas que desenvolvi.</h2>
-          </div>
-          <div class="cards-grid">
-            <article class="info-card project-card reveal">
-              <img src="img/agrodigital-mockup.png" alt="Dashboard do AgroDigital mostrando receitas, despesas e status dos plantios, em moldura de navegador" loading="lazy">
-              <div class="project-card-body">
-                <h3>AgroDigital</h3>
-                <p>Sistema de gestão agrícola com dashboard financeiro, controle de plantio e monitoramento via satélite.</p>
-                <p><a href="https://agrodigital.onrender.com" target="_blank">Ver projeto ao vivo</a></p>
-              </div>
-            </article>
-            <article class="info-card project-card reveal">
-              <img src="img/hotel-dashboard-mockup.png" alt="Dashboard do Hotel Aurora mostrando ocupação e receita dos últimos 7 dias, em moldura de navegador" loading="lazy">
-              <div class="project-card-body">
-                <h3>Hotel Dashboard</h3>
-                <p>Painel de gestão para hotelaria com controle de quartos e reservas.</p>
-                <p><a href="https://hotel-grand-palacio.onrender.com/reservas.html" target="_blank">Ver projeto ao vivo</a></p>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <div class="container footer-content">
-        <p>© <span id="year"></span> Gustavo. Todos os direitos reservados.</p>
-        <a href="contact.html">Vamos conversar</a>
       </div>
-    </footer>
 
-    <script src="js/main.js"></script>
-  </body>
+      <div class="system-card">
+        <div class="system-header">
+          <div class="system-icon-row">
+            <div class="system-emoji">🏨</div>
+            <span class="system-segment">Hotelaria</span>
+          </div>
+          <h3>Hotel Dashboard</h3>
+        </div>
+        <p>Modelo de gestão hoteleira com controle de quartos, reservas e financeiro. Interface dark premium — usado para apresentação a clientes do setor.</p>
+        <div class="system-footer">
+          <div class="system-techs"><span class="tech">HTML</span><span class="tech">CSS</span><span class="tech">JS</span></div>
+          <a href="https://hotel-grand-palacio.onrender.com" target="_blank" class="system-link">Ver ao vivo →</a>
+        </div>
+      </div>
+
+      <div class="system-card">
+        <div class="system-header">
+          <div class="system-icon-row">
+            <div class="system-emoji">🏥</div>
+            <span class="system-segment">Saúde</span>
+          </div>
+          <h3>Sistema Clínica Saúde</h3>
+        </div>
+        <p>Gestão completa para clínicas: cadastro de pacientes, agendamento de consultas e controle financeiro. Publicado no GitHub Pages.</p>
+        <div class="system-footer">
+          <div class="system-techs"><span class="tech">HTML</span><span class="tech">CSS</span><span class="tech">JS</span></div>
+          <a href="https://dgustavopaula-lang.github.io/sistema-clinica-saude" target="_blank" class="system-link">GitHub Pages →</a>
+        </div>
+      </div>
+
+      <div class="system-card">
+        <div class="system-header">
+          <div class="system-icon-row">
+            <div class="system-emoji">🏠</div>
+            <span class="system-segment">Imobiliário</span>
+          </div>
+          <h3>Sistema Imobiliária</h3>
+        </div>
+        <p>Gestão de imóveis, clientes e contratos para imobiliárias e corretores autônomos. Interface limpa e responsiva.</p>
+        <div class="system-footer">
+          <div class="system-techs"><span class="tech">HTML</span><span class="tech">CSS</span><span class="tech">JS</span></div>
+          <a href="https://dgustavopaula-lang.github.io/sistema-imobiliaria" target="_blank" class="system-link">GitHub Pages →</a>
+        </div>
+      </div>
+
+      <div class="system-card">
+        <div class="system-header">
+          <div class="system-icon-row">
+            <div class="system-emoji">⛽</div>
+            <span class="system-segment">Varejo</span>
+          </div>
+          <h3>Sistema Posto de Gasolina</h3>
+        </div>
+        <p>Controle de abastecimento, estoque de combustíveis e caixa para postos de gasolina. Desenvolvido em vanilla JS.</p>
+        <div class="system-footer">
+          <div class="system-techs"><span class="tech">HTML</span><span class="tech">CSS</span><span class="tech">JS</span></div>
+          <a href="https://dgustavopaula-lang.github.io/sistema-posto-gasolina" target="_blank" class="system-link">GitHub Pages →</a>
+        </div>
+      </div>
+
+    </div>
+    <div style="text-align:center;margin-top:2.5rem;">
+      <a href="https://github.com/dgustavopaula-lang" target="_blank" class="btn-outline">Ver todos os repositórios no GitHub →</a>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <div class="container">
+    <div class="section-eyebrow"><span>Sobre</span></div>
+    <h2 class="section-title">Tecnologia com propósito.</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Sou <strong>Gustavo Paula Santos</strong>, filósofo, pesquisador e desenvolvedor web. Com mais de <strong>20 anos de experiência acadêmica</strong> em Filosofia, Teologia e Psicologia Social, aplico pensamento analítico e rigor metodológico no desenvolvimento de soluções digitais.</p>
+        <p>Minha abordagem parte sempre de uma ideia central: <strong>resolver o problema real do cliente</strong>. Entrego sistemas funcionais em dias — não em meses — com diagnóstico rápido, protótipo imediato e evolução por etapas.</p>
+        <p>Pesquisador em <strong>Filosofia da Mente e Ética em Inteligência Artificial</strong>. Escritor com dois livros publicados. Professor de inglês online. Fluente em 5 idiomas.</p>
+        <div class="about-tags">
+          <span class="tag hl">Filosofia da Mente</span>
+          <span class="tag hl">Ética em IA</span>
+          <span class="tag">Psicologia Social (Doutorado)</span>
+          <span class="tag">Teologia</span>
+          <span class="tag">Hebraico Bíblico</span>
+          <span class="tag">Professor de Inglês</span>
+          <span class="tag">2 Livros Publicados</span>
+        </div>
+      </div>
+      <div>
+        <div class="side-box">
+          <h4>🌎 Idiomas</h4>
+          <div class="lang-item"><span>Português</span><span class="lang-level">Nativo</span></div>
+          <div class="lang-item"><span>Inglês</span><span class="lang-level">Intermediário</span></div>
+          <div class="lang-item"><span>Espanhol</span><span class="lang-level">Avançado</span></div>
+          <div class="lang-item"><span>Hebraico Bíblico</span><span class="lang-level">Avançado</span></div>
+          <div class="lang-item"><span>Hebraico Moderno</span><span class="lang-level">Intermediário</span></div>
+        </div>
+        <div class="github-box">
+          <h4>🐙 GitHub Público</h4>
+          <p>Todos os sistemas estão publicados e acessíveis no GitHub Pages.</p>
+          <a href="https://github.com/dgustavopaula-lang" target="_blank" class="github-link">github.com/dgustavopaula-lang →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVIÇOS -->
+<section id="servicos" style="background:#080808;">
+  <div class="container">
+    <div class="section-eyebrow"><span>Serviços</span></div>
+    <h2 class="section-title">Como posso ajudar.</h2>
+    <p class="section-sub">Do diagnóstico ao deploy. Entrego soluções completas com suporte contínuo.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">💻</div>
+        <h3>Sistemas de Gestão</h3>
+        <p>Sistemas personalizados para qualquer segmento. Entrega em dias com interface profissional.</p>
+        <p class="service-price">A partir de R$ 500</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📊</div>
+        <h3>Dashboards & SaaS</h3>
+        <p>Painéis interativos com gráficos, relatórios e dados em tempo real para decisão estratégica.</p>
+        <p class="service-price">A partir de R$ 800</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🌐</div>
+        <h3>Sites & Landing Pages</h3>
+        <p>Sites profissionais, landing pages de alta conversão e portfólios com SEO otimizado.</p>
+        <p class="service-price">A partir de R$ 300</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔧</div>
+        <h3>Suporte Mensal</h3>
+        <p>Manutenção, atualizações, novos recursos e suporte técnico contínuo via Skype ou Zoom.</p>
+        <p class="service-price">R$ 200/mês</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato" class="contact-bg">
+  <div class="container">
+    <div class="contact-inner">
+      <div class="contact-left">
+        <div class="section-eyebrow"><span>Contato</span></div>
+        <h2>Vamos construir <span>algo juntos.</span></h2>
+        <p>Tem um projeto em mente? Descreva sua necessidade e receba um diagnóstico gratuito em até 24 horas. Prototype em dias, não em meses.</p>
+        <div class="contact-items">
+          <a href="mailto:dgustavopaula@gmail.com" class="contact-item">
+            <span class="ci">📧</span><span>dgustavopaula@gmail.com</span>
+          </a>
+          <a href="https://github.com/dgustavopaula-lang" target="_blank" class="contact-item">
+            <span class="ci">🐙</span><span>github.com/dgustavopaula-lang</span>
+          </a>
+          <a href="https://agrodigital.onrender.com" target="_blank" class="contact-item">
+            <span class="ci">🌾</span><span>AgroDigital — Projeto Principal</span>
+          </a>
+        </div>
+      </div>
+      <div class="contact-right">
+        <h3>Como funciona</h3>
+        <p>Processo simples e transparente do primeiro contato à entrega.</p>
+        <div class="process-steps">
+          <div class="process-step">
+            <div class="step-num">1</div>
+            <div class="step-text"><strong>Diagnóstico gratuito</strong> — Você descreve o problema, eu analiso e proponho a solução em 24h.</div>
+          </div>
+          <div class="process-step">
+            <div class="step-num">2</div>
+            <div class="step-text"><strong>Proposta e aprovação</strong> — Orçamento claro, prazo definido e pagamento via PIX.</div>
+          </div>
+          <div class="process-step">
+            <div class="step-num">3</div>
+            <div class="step-text"><strong>Desenvolvimento rápido</strong> — Protótipo em dias, com atualizações constantes.</div>
+          </div>
+          <div class="process-step">
+            <div class="step-num">4</div>
+            <div class="step-text"><strong>Entrega e suporte</strong> — Deploy, treinamento e suporte mensal opcional.</div>
+          </div>
+        </div>
+        <a href="mailto:dgustavopaula@gmail.com?subject=Solicitar%20Proposta&body=Olá%20Gustavo,%20gostaria%20de%20solicitar%20um%20diagnóstico%20gratuito." class="btn-primary" style="display:block;text-align:center;">Solicitar diagnóstico gratuito →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 <span>Gustavo Paula Santos</span> — GPS.dev</p>
+  <p>Filósofo · Desenvolvedor · Pesquisador · <span>Brasil</span></p>
+</footer>
+
+</body>
 </html>
