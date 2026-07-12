@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>English Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>English Dashboard</h1>
+    <p>Sistema simples para professor ou escola de inglês</p>
+  </header>
+
+  <main>
+
+    <section class="cards">
+      <div class="info-card">
+        <h3>Total de Alunos</h3>
+        <p id="totalAlunos">0</p>
+      </div>
+
+      <div class="info-card">
+        <h3>Aulas Marcadas</h3>
+        <p id="totalAulas">0</p>
+      </div>
+
+      <div class="info-card">
+        <h3>Receita Total</h3>
+        <p id="totalReceita">R$ 0,00</p>
+      </div>
+    </section>
+
+    <section class="form-section">
+      <h2>Cadastrar Aluno</h2>
+
+      <input type="text" id="nomeAluno" placeholder="Nome do aluno">
+      <input type="text" id="nivelAluno" placeholder="Nível: básico, intermediário ou avançado">
+      <input type="number" id="valorMensalidade" placeholder="Valor da mensalidade">
+
+      <button onclick="cadastrarAluno()">Cadastrar Aluno</button>
+    </section>
+
+    <section class="form-section">
+      <h2>Registrar Aula</h2>
+
+      <input type="text" id="alunoAula" placeholder="Nome do aluno">
+      <input type="date" id="dataAula">
+      <input type="time" id="horaAula">
+
+      <button onclick="registrarAula()">Registrar Aula</button>
+    </section>
+
+    <section class="form-section">
+      <h2>Alunos Cadastrados</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Aluno</th>
+            <th>Nível</th>
+            <th>Mensalidade</th>
+          </tr>
+        </thead>
+        <tbody id="listaAlunos">
+        </tbody>
+      </table>
+    </section>
+
+    <section class="form-section">
+      <h2>Aulas Registradas</h2>
+      <ul id="listaAulas"></ul>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Projeto criado por Gustavo Paula Santos | Portfólio VS Code + GitHub</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
