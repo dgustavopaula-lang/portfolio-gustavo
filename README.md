@@ -25,4 +25,4 @@
 ## Contato
 
 Email: dgustavopaula@gmail.com
-Meu Site https://digitalmentenet.blogspot.com/
+Meu Site em breve
