@@ -59,6 +59,8 @@
     .btn-primary:hover { background:var(--laranja2); transform:translateY(-2px); }
     .btn-outline { background:transparent; color:var(--texto); border:1px solid var(--bg3); }
     .btn-outline:hover { border-color:var(--laranja); color:var(--laranja); }
+    .btn-whatsapp { background:#25D366; color:#fff; }
+    .btn-whatsapp:hover { background:#1fb855; transform:translateY(-2px); }
     .idiomas { display:flex; gap:0.5rem; flex-wrap:wrap; justify-content:center; }
     .idioma-tag {
       background:var(--bg2); border:1px solid var(--bg3);
@@ -124,6 +126,23 @@
     .projeto-card h3 { font-size:0.95rem; margin-bottom:0.3rem; }
     .projeto-card p { font-size:0.82rem; color:var(--muted); font-family:var(--inter); }
 
+    .planos-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.5rem; }
+    .plano-card { background:var(--bg2); border:1px solid var(--bg3); border-radius:14px; padding:2rem 1.5rem; position:relative; display:flex; flex-direction:column; }
+    .plano-card.destaque { border-color:var(--laranja); }
+    .plano-badge {
+      position:absolute; top:-12px; left:50%; transform:translateX(-50%);
+      background:var(--laranja); color:#fff; font-size:0.72rem; font-family:var(--mono);
+      padding:0.25rem 0.9rem; border-radius:999px; white-space:nowrap;
+    }
+    .plano-nome { font-size:0.85rem; color:var(--muted); font-family:var(--mono); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.5rem; }
+    .plano-preco { font-size:1.8rem; font-weight:700; margin-bottom:0.2rem; }
+    .plano-preco span { font-size:0.85rem; color:var(--muted); font-weight:400; }
+    .plano-suporte { font-size:0.8rem; color:var(--muted); font-family:var(--inter); margin-bottom:1.25rem; }
+    .plano-lista { list-style:none; margin-bottom:1.5rem; flex:1; }
+    .plano-lista li { font-size:0.85rem; color:var(--texto); font-family:var(--inter); padding:0.4rem 0; display:flex; gap:0.5rem; align-items:flex-start; }
+    .plano-lista li i { color:var(--laranja); font-size:0.9rem; margin-top:0.15rem; }
+    .planos-nota { text-align:center; color:var(--muted); font-size:0.82rem; font-family:var(--inter); margin-top:2rem; }
+
     .stack-bg { background:var(--bg2); }
     .stack-grid { display:flex; flex-wrap:wrap; gap:0.75rem; }
     .stack-tag {
@@ -168,6 +187,7 @@
     <li><a href="#sobre">Sobre</a></li>
     <li><a href="#plataforma">Plataforma</a></li>
     <li><a href="#projetos">Projetos</a></li>
+    <li><a href="#planos">Planos</a></li>
     <li><a href="#contato">Contato</a></li>
   </ul>
 </nav>
@@ -178,6 +198,7 @@
   <div class="hero-sub">Desenvolvedor · Filósofo · Pesquisador</div>
   <p>Construo sistemas leves de gestão para pequenos negócios — HTML, CSS e JS puro, sem framework, publicados no GitHub Pages.</p>
   <div class="hero-btns">
+    <a href="https://wa.me/5564992035821?text=Ol%C3%A1%20Gustavo!%20Quero%20um%20diagn%C3%B3stico%20gratuito." target="_blank" class="btn btn-whatsapp"><i class="ri-whatsapp-line"></i> Diagnóstico gratuito</a>
     <a href="#plataforma" class="btn btn-primary"><i class="ri-rocket-line"></i> Ver plataforma</a>
     <a href="#projetos" class="btn btn-outline"><i class="ri-folder-line"></i> Projetos</a>
   </div>
@@ -274,6 +295,59 @@
         <i class="ri-add-line"></i><span style="font-size:0.9rem">Ver todos os sistemas</span>
       </a>
     </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="planos">
+  <div class="container">
+    <div class="section-tag">// investimento</div>
+    <h2 class="section-title">Planos e Preços</h2>
+    <p class="section-sub">Você paga a implantação uma vez. O sistema é seu para sempre. Suporte mensal é opcional.</p>
+    <div class="planos-grid">
+      <div class="plano-card">
+        <div class="plano-nome">Landing Page</div>
+        <div class="plano-preco">R$ 497 <span>único</span></div>
+        <div class="plano-suporte">+ Suporte opcional: R$ 97/mês</div>
+        <ul class="plano-lista">
+          <li><i class="ri-check-line"></i> Página responsiva e moderna</li>
+          <li><i class="ri-check-line"></i> Botão WhatsApp + formulário</li>
+          <li><i class="ri-check-line"></i> Publicação online inclusa</li>
+          <li><i class="ri-check-line"></i> Manual de uso em PDF</li>
+        </ul>
+        <a href="https://wa.me/5564992035821?text=Ol%C3%A1!%20Tenho%20interesse%20na%20Landing%20Page." target="_blank" class="btn btn-outline"><i class="ri-whatsapp-line"></i> Solicitar orçamento</a>
+      </div>
+      <div class="plano-card destaque">
+        <div class="plano-badge">Mais vendido</div>
+        <div class="plano-nome">Sistema de Gestão</div>
+        <div class="plano-preco">R$ 1.200 <span>único</span></div>
+        <div class="plano-suporte">+ Suporte opcional: R$ 147/mês</div>
+        <ul class="plano-lista">
+          <li><i class="ri-check-line"></i> Dashboard com métricas</li>
+          <li><i class="ri-check-line"></i> Banco de dados na nuvem</li>
+          <li><i class="ri-check-line"></i> Funciona no celular e PC</li>
+          <li><i class="ri-check-line"></i> Publicação online inclusa</li>
+          <li><i class="ri-check-line"></i> Manual PDF + treinamento</li>
+          <li><i class="ri-check-line"></i> 30 dias de suporte incluso</li>
+        </ul>
+        <a href="https://wa.me/5564992035821?text=Ol%C3%A1!%20Quero%20o%20Sistema%20de%20Gest%C3%A3o." target="_blank" class="btn btn-primary"><i class="ri-whatsapp-line"></i> Quero este sistema</a>
+      </div>
+      <div class="plano-card">
+        <div class="plano-nome">Sistema Avançado</div>
+        <div class="plano-preco">R$ 2.500+ <span>consulta</span></div>
+        <div class="plano-suporte">+ Suporte opcional: R$ 197/mês</div>
+        <ul class="plano-lista">
+          <li><i class="ri-check-line"></i> Tudo do plano Gestão</li>
+          <li><i class="ri-check-line"></i> Integração com APIs externas</li>
+          <li><i class="ri-check-line"></i> Múltiplas unidades</li>
+          <li><i class="ri-check-line"></i> Relatórios em PDF</li>
+          <li><i class="ri-check-line"></i> 60 dias de suporte incluso</li>
+        </ul>
+        <a href="https://wa.me/5564992035821?text=Ol%C3%A1!%20Quero%20o%20Sistema%20Avan%C3%A7ado." target="_blank" class="btn btn-outline"><i class="ri-whatsapp-line"></i> Solicitar orçamento</a>
+      </div>
+    </div>
+    <p class="planos-nota">O suporte mensal é 100% opcional — cancele quando quiser. O sistema continua seu.</p>
   </div>
 </section>
 
