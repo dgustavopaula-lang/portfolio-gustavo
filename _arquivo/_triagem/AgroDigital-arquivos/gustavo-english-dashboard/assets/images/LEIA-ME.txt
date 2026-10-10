@@ -1,4 +1,0 @@
-Coloque nesta pasta as imagens do projeto, como:
-- logo.png
-- professor.jpg
-- aula-online.jpg
